@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>EventBites</title>
+  <link rel="icon" href="/assets/images/bites.png" type="image/png" sizes="16x16">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div id="headline" class="col-lg-12">
+        <h1>EVENTBITES</h1>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div id="description" class="col-lg-12">
+        <h3 id>SEARCH YOUR UPCOMING EVENT BY CITY AND VENUE, BUY TICKETS, THEN LOCATE THE NEAREST RESTAURANTS!</h3>
+      </div>
+
+  <div id="loginPage" class="container">      
+    <div id="accordion" style="width: 30%; margin: auto;">
+      <h3></h3>                                          <!--Empty h3 and empty div are used so-->
+      <div style="height: 0px; display: none"></div>     <!--the sign in text boxes dont appear untill click -->
+        <h3 class="button sign-in-btn">SIGN IN</h3>
+      <div class="sign-in-section form-group">
+      <!-- <div class="sign-in-section form-group"> -->
+        <form id="login">
+          <input id="loginEmail" class="form-control" type="email" placeholder="Email address" required>
+          <input id="loginPassword" class="form-control" type="password" placeholder="Password" required>
+          <input id="btnLogin" class="btn btn-lg btn-danger btn-block" type="submit" value="Submit">
+        </form>
+      <!-- </div> -->
+      </div>
+      <h3 class="button sign-up-btn">SIGN UP</h3>
+      <div class="sign-up-section form-group">    
+        <!-- <div class="sign-up-section form-group"> -->
+        <form id="signup">
+            <!-- <input id="signUpName" class="field" type="text" placeholder="User name" required> -->
+            <input id="signUpEmail" class="form-control" type="email" placeholder="Email address" required>
+            <input id="signUpPassword" class="form-control" type="password" placeholder="Password" required>
+            <input id="btnSignup" class="btn btn-lg btn-danger btn-block" type="submit" value="Submit">
+        </form>
+        <!-- </div> -->
+      </div>
+      <h3 id="guestLogin" class="button" onclick="">TRY IT!</h3>
+      <div>
+      </div>
+    </div>
+  </div>
+  <!--END OF JQUERY UI FRONT PAGE-->
+
+  <!-- MAIN PAGE -->
+  <div class="container">
+    <div id="mainPage" class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <select id="city" class="max form-control">
+            <option value="" disabled selected>SELECT A CITY!</option>
+            <option>CHANDLER</option>
+            <option>GILBERT</option>
+            <option>GLENDALE</option>
+            <option>MESA</option>
+            <option>PHOENIX</option>
+            <option>TEMPE</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <select id="event" class="max form-control">
+            <option value="" disabled selected>SELECT A VENUE!</option>
+            <option>ASU GAMMAGE</option>
+            <option>CHANDLER CENTER FOR THE ARTS</option>
+            <option>CHASE FIELD</option>
+            <option>COMERICA THEATRE</option>
+            <option>GILA RIVER ARENA</option>
+            <option>MESA ARTS CENTER</option>
+            <option>MESA AMPHITHEATRE</option>
+            <option>STATE FARM STADIUM</option>
+            <option>TALKING STICK RESORT ARENA</option>
+            <option>TEMPE CENTER FOR THE ARTS</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <input id="search" class="max btn btn-primary" type="button" value="SEARCH EVENTS" />
+        </div>
+        <div class="col-md-2">
+          <input id="clr" class="max btn btn-danger" type="button" value="CLEAR" />
+        </div>
+        <button id="btnLogout" class="btn btn-danger d-inline-block hide">LOG OUT</button>
+      </div>
+    </div>
+
+    <!-- END OF MAIN PAGE -->
+
+    <!--SEARCH RESULTS-->
+    <div class="container" id="res">
+      <div class="row">
+        <div class="col">
+          <table class="table text-light b">
+            <thead>
+              <tr class="bg-dark">
+                <th scope="col" class="b c">EVENT</th>
+                <th scope="col" class="b c">LOCATION</th>
+                <th scope="col" class="b c">DATE</th>
+                <th scope="col" class="b c">EVENT TIME</th>
+                <th scope="col" class="b c">RESTAURANTS</th>
+                <th scope="col" class="b c">TICKETS</th>
+              </tr>
+            </thead>
+            <!--JQUERY WILL CREATE TABLE ELEMENTS BASED OFF THE AMOUNT OF SEARCH RESULTS-->
+            <tbody id="table">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- END OF SEARCH RESULTS -->
+    <!-- RESTAURANT RESULTS -->
+    <div class="container" id="food">
+      <div class="row">
+        <div class="col">
+          <table class="table text-light b">
+            <thead>
+              <tr class="bg-dark">
+                <th scope="col" class="col-3 b c d-inline-block text-light">RESTAURANT</th>
+                <th scope="col" class="col-3 b c d-inline-block text-light">LOCATION</th>
+                <th scope="col" class="col-2 b c d-inline-block text-light">HOURS</th>
+                <th scope="col" class="col-2 b c d-inline-block text-light">RATING</th>
+                <th scope="col" class="col-1 b c d-inline-block text-light">MAP</th>
+                <th scope="col" class="col-1 b c d-inline-block text-light">SAVE</th>
+              </tr>
+            </thead>
+            <tbody id="restTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container" id="saved-food">
+      <div class="row">
+        <div class="col">
+          <table class="table text-light b">
+            <thead>
+              <tr class="bg-dark">
+
+                <th scope="col" class="col-3 b c d-inline-block text-light">RESTAURANT</th>
+                <th scope="col" class="col-3 b c d-inline-block text-light">LOCATION</th>
+                <th scope="col" class="col-3 b c d-inline-block text-light">HOURS</th>
+                <th scope="col" class="col-3 b c d-inline-block text-light">RATING</th>
+              </tr>
+            </thead>
+
+            <!--JQUERY WILL CREATE RESTERAUNT TABLE ELEMENTS-->
+            <tbody id="display-item"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!--END OF RESTERAUNT RESULTS-->
+  <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="./assets/js/firebase.js"></script>
+  <script src="./assets/js/script.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+  $( "#accordion" ).accordion();
+  } );
+  </script>
+
+</body>
+
+</html>
